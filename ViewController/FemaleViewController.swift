@@ -11,7 +11,7 @@ import UIKit
 //1). declare protocol and conform with class
 protocol Instructions: class {
     func passInfo(messagePassed: String, imagePassed: UIImage, colorPassed: UIColor)
-  
+    // func passMaleInfo(messagePassed: String, imagePassed: UIImage, colorPassed: UIColor)
 }
 
 
@@ -48,16 +48,13 @@ class FemaleViewController: UIViewController {
     
     @IBAction func goBackMainButtonTapped(_ sender: Any) {
         print("You hit me man!")
-        //3). creating new information
+        // creating new information
         femaleWorker?.passInfo(messagePassed: "Only support for male for now", imagePassed: UIImage(named: "maleIcon")! , colorPassed: .systemGray)
-        
-        dismiss(animated: true, completion: nil) 
+    // dispaly only support male 
+//        let VC = storyboard?.instantiateViewController(identifier: "MainVC") as! MainViewController
+//        present(VC, animated: true, completion: nil)
         
     }
-    
-    
-    
-    //MARK: Function
-    
 
+    
 }

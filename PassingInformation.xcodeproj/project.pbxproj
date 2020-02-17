@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		025EDBA523F72977009A0873 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025EDBA423F72977009A0873 /* ViewModel.swift */; };
+		025EDBA823F7361A009A0873 /* UIImage Extension .swift in Sources */ = {isa = PBXBuildFile; fileRef = 025EDBA723F7361A009A0873 /* UIImage Extension .swift */; };
 		4C942A8E23DDF53700D1C6A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C942A8D23DDF53700D1C6A6 /* AppDelegate.swift */; };
 		4C942A9023DDF53700D1C6A6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C942A8F23DDF53700D1C6A6 /* SceneDelegate.swift */; };
 		4C942A9223DDF53700D1C6A6 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C942A9123DDF53700D1C6A6 /* MainViewController.swift */; };
@@ -39,6 +41,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		025EDBA423F72977009A0873 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		025EDBA723F7361A009A0873 /* UIImage Extension .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage Extension .swift"; sourceTree = "<group>"; };
 		4C942A8A23DDF53700D1C6A6 /* PassingInformation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PassingInformation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C942A8D23DDF53700D1C6A6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4C942A8F23DDF53700D1C6A6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -84,12 +88,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		025EDBA223F72810009A0873 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				025EDBA423F72977009A0873 /* ViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		025EDBA323F7283F009A0873 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				4C942A9323DDF53700D1C6A6 /* Main.storyboard */,
+				4C942A9B23DDF53A00D1C6A6 /* LaunchScreen.storyboard */,
+				4C942A9923DDF53A00D1C6A6 /* Assets.xcassets */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		025EDBA623F73604009A0873 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				025EDBA723F7361A009A0873 /* UIImage Extension .swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		4C942A8123DDF53700D1C6A6 = {
 			isa = PBXGroup;
 			children = (
+				025EDBA623F73604009A0873 /* Extensions */,
 				4C942AC023DDF54700D1C6A6 /* Model */,
 				4C942AC123DE03F500D1C6A6 /* View */,
+				025EDBA223F72810009A0873 /* ViewModel */,
 				4C942AC223DE041A00D1C6A6 /* ViewController */,
+				025EDBA323F7283F009A0873 /* Storyboard */,
 				4C942A8C23DDF53700D1C6A6 /* PassingInformation */,
 				4C942AA623DDF53A00D1C6A6 /* PassingInformationTests */,
 				4C942AB123DDF53A00D1C6A6 /* PassingInformationUITests */,
@@ -146,8 +179,6 @@
 		4C942AC123DE03F500D1C6A6 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				4C942A9323DDF53700D1C6A6 /* Main.storyboard */,
-				4C942A9923DDF53A00D1C6A6 /* Assets.xcassets */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -155,7 +186,6 @@
 		4C942AC223DE041A00D1C6A6 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				4C942A9B23DDF53A00D1C6A6 /* LaunchScreen.storyboard */,
 				4C942A9123DDF53700D1C6A6 /* MainViewController.swift */,
 				4C942AC323DE20E500D1C6A6 /* FemaleViewController.swift */,
 				4C942AC523DE21FC00D1C6A6 /* SingleManViewController.swift */,
@@ -297,10 +327,12 @@
 			files = (
 				4C942A9223DDF53700D1C6A6 /* MainViewController.swift in Sources */,
 				4C942A8E23DDF53700D1C6A6 /* AppDelegate.swift in Sources */,
+				025EDBA823F7361A009A0873 /* UIImage Extension .swift in Sources */,
 				4C942A9823DDF53700D1C6A6 /* PassingInformation.xcdatamodeld in Sources */,
 				4C942AC823DE221000D1C6A6 /* MarriedManViewController.swift in Sources */,
 				4C942AC623DE21FC00D1C6A6 /* SingleManViewController.swift in Sources */,
 				4C942A9023DDF53700D1C6A6 /* SceneDelegate.swift in Sources */,
+				025EDBA523F72977009A0873 /* ViewModel.swift in Sources */,
 				4C942AC423DE20E500D1C6A6 /* FemaleViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

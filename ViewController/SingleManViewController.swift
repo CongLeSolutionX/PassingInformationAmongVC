@@ -25,12 +25,15 @@ class SingleManViewController: UIViewController {
     //2). weak delegate to avoid retain cycles
     weak var singleManWorker: Instructions?
     
-    
+    // Notification Names
+    let noSingle = Notification.Name(rawValue: noSingleNotificationKey)
+    let yesSingle = Notification.Name(rawValue: yesSingleNotificationKey)
     
     
     //MARK: VC Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        createObservers()
         
     }
     
@@ -43,15 +46,14 @@ class SingleManViewController: UIViewController {
         
         //Notification - 2 - post the notification for the listeners
         NotificationCenter.default.post(name: notifyName, object: nil)
-        
-        dismiss(animated: true, completion: nil)
-        
-        
     }
     
     @IBAction func noSingleButtonTapped(_ sender: UIButton) {
         print("just tapped no single button")
-        //dismiss(animated: true, completion: nil)
+        let notifyName = Notification.Name(noSingleNotificationKey)
+        
+        //Notification - 2 - post the notification for the listeners
+        NotificationCenter.default.post(name: notifyName, object: nil)
         
     }
     
@@ -59,16 +61,67 @@ class SingleManViewController: UIViewController {
     //MARK: Function
     // segue to connect to the next MarriedManViewController 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
-          super.prepare(for: segue, sender: sender)
-          // open VC with corresponding identifiers
-          if segue.identifier == "noSingleSegue" {
-              let marriedVC = segue.destination as! MarriedManViewController
-              
-              programmaticlyGetMsg(getMsg: marriedVC.message) // for debug purposes
-             
-          }
-      }
+        super.prepare(for: segue, sender: sender)
+        // open VC with corresponding identifiers
+        if segue.identifier == "noSingleSegue" {
+            let marriedVC = segue.destination as! MarriedManViewController
+            
+            programmaticlyGetMsg(getMsg: marriedVC.message) // for debug purposes
+            // present(marriedVC, animated: true, completion: nil )
+        }
+    }
+    
+    
+    
+    func createObservers() {
+        // noSingle Observer
+        NotificationCenter.default.addObserver(self, selector: #selector(SingleManViewController.goToNextVC(notification:)), name: noSingle, object: nil)
+        
+        //        NotificationCenter.default.addObserver(self, selector: #selector(SingleManViewController.updateLabel(notification:)), name: noSingle, object: nil)
+        //
+        //        NotificationCenter.default.addObserver(self, selector: #selector(SingleManViewController.updateButton(notification:)), name: noSingle, object: nil)
+        
+        // yesSingle Observer
+        NotificationCenter.default.addObserver(self, selector: #selector(SingleManViewController.updateYesUI(notification:)), name: yesSingle, object: nil)
+        
+    }
+    
+    @objc func updateYesUI(notification: NSNotification){
+        let isYesSingle = notification.name == yesSingle
+        if(isYesSingle){
+            // change the UI Image
+            let imageFromYesSingle =  UIImage.safelyUnwrapImage("happySingle")
+            singleManImage.image = imageFromYesSingle
+            // change the UI Label
+            singleManLabel.text = "Enjoy your life when your are still Single"
+            
+            // change the buttons and terminate the story flow
+            let newColorYesSingle = UIColor.systemRed
+            view.backgroundColor = newColorYesSingle // change color of VC background
+            
+            // Updating the main button
+            yesSingleButton.backgroundColor = .orange
+            yesSingleButton.layer.cornerRadius = 15
+            yesSingleButton.setTitle("Good luck!", for: .normal)
+            yesSingleButton.isEnabled = false
+            
+            // terminated point of the story flow
+            noSingleButton.isHidden = true
+            noSingleButton.isEnabled = false
+        }
+        else {
+            return
+        }
+    }
+    
+    @objc func goToNextVC(notification: NSNotification){
+        let isNoSingle = notification.name == noSingle
+        if(isNoSingle){
+            // continue the story flow and go to the MarriedManViewController
+            let VC = storyboard?.instantiateViewController(identifier: "MarriedManVC") as! MarriedManViewController
+            
+            present(VC, animated: true, completion: nil)
+        }
+        
+    }
 }
-
-
-

@@ -40,14 +40,15 @@ class MarriedManViewController: UIViewController {
         print("just tapped yes Kid Button ")
         
         // go back to the HomeViewController
-        let mainVC = storyboard?.instantiateViewController(identifier: "MainVC") as! MainViewController
-        
-        present(mainVC, animated: true, completion: nil)
+           // updating the UI
+             marriedManImage.image = #imageLiteral(resourceName: "HappyCouple")
+             marriedManLabel.text = "You have a happy family!"
+             yesKidButton.setTitle("Congratulation!", for: .normal)
+             yesKidButton.isEnabled = false
+             noKidButton.isHidden = true
         
         
     }
-    
-    
     
     @IBAction func noKidButtonTapped(_ sender: UIButton) {
         print("Just tapped no Kid Button ")
@@ -55,12 +56,9 @@ class MarriedManViewController: UIViewController {
         marriedManImage.image = #imageLiteral(resourceName: "noKidCouple")
         marriedManLabel.text = "You should make babe in your free time!"
         yesKidButton.setTitle("Good luck!", for: .normal)
+        yesKidButton.isEnabled = false
         noKidButton.isHidden = true
         
     }
-    
-    
-    
-    //MARK: Function
     
 }

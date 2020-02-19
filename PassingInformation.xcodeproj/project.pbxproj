@@ -146,7 +146,6 @@
 				4C942A8D23DDF53700D1C6A6 /* AppDelegate.swift */,
 				4C942A8F23DDF53700D1C6A6 /* SceneDelegate.swift */,
 				4C942A9E23DDF53A00D1C6A6 /* Info.plist */,
-				4C942A9623DDF53700D1C6A6 /* PassingInformation.xcdatamodeld */,
 			);
 			path = PassingInformation;
 			sourceTree = "<group>";
@@ -172,6 +171,7 @@
 		4C942AC023DDF54700D1C6A6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4C942A9623DDF53700D1C6A6 /* PassingInformation.xcdatamodeld */,
 			);
 			path = Model;
 			sourceTree = "<group>";

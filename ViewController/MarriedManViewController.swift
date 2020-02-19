@@ -38,33 +38,29 @@ class MarriedManViewController: UIViewController {
     
     @IBAction func yesKidButtonTapped(_ sender: UIButton) {
         print("just tapped yes Kid Button ")
-        let notifyName = Notification.Name(yesKidNotificationKey)
-        
-        //Notification - 2 - post the notification for the listeners
-        NotificationCenter.default.post(name: notifyName, object: nil)
         
         // go back to the HomeViewController
         let mainVC = storyboard?.instantiateViewController(identifier: "MainVC") as! MainViewController
-                      
+        
         present(mainVC, animated: true, completion: nil)
+        
+        
     }
     
     
     
     @IBAction func noKidButtonTapped(_ sender: UIButton) {
         print("Just tapped no Kid Button ")
-        let notifyName = Notification.Name(noKidNotificationKey)
+        // updating the UI
+        marriedManImage.image = #imageLiteral(resourceName: "noKidCouple")
+        marriedManLabel.text = "You should make babe in your free time!"
+        yesKidButton.setTitle("Good luck!", for: .normal)
+        noKidButton.isHidden = true
         
-        //Notification - 2 - post the notification for the listeners
-        NotificationCenter.default.post(name: notifyName, object: nil)
-        
-         // go back to the HomeViewController
-        let mainVC = storyboard?.instantiateViewController(identifier: "MainVC") as! MainViewController
-         present(mainVC, animated: true, completion: nil)
     }
     
     
     
     //MARK: Function
-  
+    
 }

@@ -10,8 +10,6 @@ import UIKit
 //Global notificaiton keys
 let noSingleNotificationKey = "com.CongLeSolutionX.noSingle"
 let yesSingleNotificationKey = "com.CongLeSolutionX.yesSingle"
-let noKidNotificationKey = "com.CongLeSolutionX.noKid"
-let yesKidNotificationKey = "com.CongLeSolutionX.yesKid"
 
 class MainViewController: UIViewController {
     
@@ -30,27 +28,20 @@ class MainViewController: UIViewController {
     var message: String! = "Back to the main VC"
     
     
-    
-    let noKid = Notification.Name(rawValue: noKidNotificationKey)
-    let yesKid = Notification.Name(rawValue: yesKidNotificationKey)
-    
-    
     //MARK: VC Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        createObservers()
     }
     
     //MARK: IBAction
     // using delegate communication with programmatic transition
     @IBAction func femaleButtonTapped(_ sender: UIButton) {
-        //0. Starting the Delegation
         // connect to new view programmatically 
         let femaleVC = storyboard?.instantiateViewController(identifier: "FemaleVC") as! FemaleViewController
         
         programmaticlyGetMsg(getMsg: femaleVC.message) // for debug purposes
         
-        //5.) set delegate as self
+        //set delegate as self
         femaleVC.femaleWorker = self
         
         present(femaleVC, animated: true, completion: nil)
@@ -63,8 +54,6 @@ class MainViewController: UIViewController {
         dismiss(animated: true, completion: nil)
         
     }
-    
-    
     //MARK:Functions
     // connect to new views via segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
@@ -77,75 +66,6 @@ class MainViewController: UIViewController {
             
         }
     }
-    
-    // Notification).
-    func createObservers() {
-
-        
-        // noKid Observer
-        NotificationCenter.default.addObserver(self, selector: #selector(MainViewController.updateMainImage(notification:)), name: noKid, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(MainViewController.updateMainLabel(notification:)), name: noKid, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(MainViewController.updateMainButton(notification:)), name: noKid, object: nil)
-        
-        // yesKid Observer
-        NotificationCenter.default.addObserver(self, selector: #selector(MainViewController.updateMainImage(notification:)), name: yesKid, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(MainViewController.updateMainLabel(notification:)), name: yesKid, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(MainViewController.updateMainButton(notification:)), name: yesKid, object: nil)
-        
-        
-        
-        
-    }
-    // Notification ).
-    @objc func updateMainImage(notification: NSNotification){
-        let isNoKid = notification.name == noKid
-        
-        if(isNoKid){
-            let imageFromNoKid = UIImage.safelyUnwrapImage("femaleIcon")
-            mainLogoImage.image = imageFromNoKid
-        } else {return }
-        
-    }
-    //Notification - 5).
-    @objc func updateMainLabel(notification: NSNotification){
-
-        let isNoKid = notification.name == noKid
-
-        // noKid case
-        if(isNoKid){
-            let labelFromNoKid = "You should make some baby in your free time"
-            mainLabel.text = labelFromNoKid
-        } else {return }
-  
-        
-        
-    }
-    // Notification
-    @objc func updateMainButton(notification: NSNotification){
-    
-        let isNoKid = notification.name == noKid
-        
-        //  let newColor = isYesSingle ? UIColor.systemRed : UIColor.systemYellow
-
-        // No kid case
-        if(isNoKid){
-            let newColorNoKid = UIColor.systemPink
-            view.backgroundColor = newColorNoKid // change color of VC background
-            
-            // updating the maleButton
-            maleButton.backgroundColor = .black
-            maleButton.layer.cornerRadius = 15
-            maleButton.setTitle("Make some babe in free time!", for: .normal)
-            // terminatetion point of the story
-                  femaleButton.isHidden = true
-                  maleButton.isEnabled = false
-        } else {return}
-        
-        
-      
-    }
-    
-    
     
 }
 
@@ -162,10 +82,6 @@ extension MainViewController: Instructions{
     }
 }
 
-
-
-
-
 // safely unwrap via optional binding globally
 func programmaticlyGetMsg(getMsg: String?){
     guard let receivedMsg = getMsg else {
@@ -174,3 +90,4 @@ func programmaticlyGetMsg(getMsg: String?){
     }
     print(receivedMsg)
 }
+

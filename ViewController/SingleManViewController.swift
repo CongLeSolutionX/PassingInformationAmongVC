@@ -22,7 +22,7 @@ class SingleManViewController: UIViewController {
     
     //MARK: Properties
     var message: String! = "connected singleMan VC via segue"
-    //2). weak delegate to avoid retain cycles
+    // weak delegate to avoid retain cycles
     weak var singleManWorker: Instructions?
     
     // Notification Names
@@ -62,13 +62,11 @@ class SingleManViewController: UIViewController {
     // segue to connect to the next MarriedManViewController 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         super.prepare(for: segue, sender: sender)
-        // open VC with corresponding identifiers
-        if segue.identifier == "noSingleSegue" {
-            let marriedVC = segue.destination as! MarriedManViewController
-            
-            programmaticlyGetMsg(getMsg: marriedVC.message) // for debug purposes
-            // present(marriedVC, animated: true, completion: nil )
-        }
+
+          let marriedVC = segue.destination as! MarriedManViewController
+        present(marriedVC,animated: true)
+         programmaticlyGetMsg(getMsg: marriedVC.message) // for debug purposes
+        
     }
     
     
@@ -76,11 +74,7 @@ class SingleManViewController: UIViewController {
     func createObservers() {
         // noSingle Observer
         NotificationCenter.default.addObserver(self, selector: #selector(SingleManViewController.goToNextVC(notification:)), name: noSingle, object: nil)
-        
-        //        NotificationCenter.default.addObserver(self, selector: #selector(SingleManViewController.updateLabel(notification:)), name: noSingle, object: nil)
-        //
-        //        NotificationCenter.default.addObserver(self, selector: #selector(SingleManViewController.updateButton(notification:)), name: noSingle, object: nil)
-        
+   
         // yesSingle Observer
         NotificationCenter.default.addObserver(self, selector: #selector(SingleManViewController.updateYesUI(notification:)), name: yesSingle, object: nil)
         

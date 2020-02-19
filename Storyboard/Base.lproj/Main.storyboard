@@ -280,7 +280,7 @@
                                     <action selector="noKidButtonTapped:" destination="WdX-Vt-4hU" eventType="touchUpInside" id="389-It-EeK"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Do you have kids?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YZ0-xi-2WH">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Do you have kids?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YZ0-xi-2WH">
                                 <rect key="frame" x="64" y="340" width="286" height="77"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="77" id="Fk5-qs-Yf8"/>
